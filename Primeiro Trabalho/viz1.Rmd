@@ -1,0 +1,137 @@
+---
+title: "Scatterplot ggplot2"
+author: "Luiz Fernando Maia"
+output: html_document
+---
+
+```{r, warning = FALSE, message = FALSE}
+library(dplyr)
+library(ggplot2)
+library(gapminder)
+library(plotly)
+
+knitr::opts_chunk$set(fig.width = 10, fig.height = 5, warning = FALSE, message = FALSE)
+```
+
+#### Verificando os tipos de colunas do dataset
+```{r}
+glimpse(gapminder)
+```
+
+#### Filtrando por year == 2007
+```{r}
+gap07 = gapminder %>%
+  filter(year == 2007)
+```
+
+#### Utilizando as opções default
+```{r}
+gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+```
+
+#### Alterando o tema
+```{r}
+gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() +
+  theme_classic()
+```
+
+```{r}
+gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() +
+  theme_bw()
+```
+
+#### Aumentando o tamanho dos pontos
+```{r}
+gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp)) +
+  geom_point(size = 2) +
+  theme_bw()
+```
+
+#### Inserindo informação do continente
+```{r}
+gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp, col = continent)) +
+  geom_point(size = 2) +
+  theme_bw()
+```
+
+```{r}
+gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp, col = continent, shape = continent)) +
+  geom_point(size = 2) +
+  theme_bw()
+```
+
+#### Inserindo informação da população no tamanho do ponto
+```{r}
+gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp, col = continent)) +
+  geom_point(aes(size = pop)) +
+  theme_bw()
+```
+
+#### Alterando os labels
+```{r}
+gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp, col = continent)) +
+  geom_point(aes(size = pop)) +
+  theme_bw() +
+  labs(x = "GDP per capita", y = "Life Expectancy", col = "Continent", size = "Population")
+```
+
+#### Reordenando as legendas
+```{r}
+gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp, col = continent)) +
+  geom_point(aes(size = pop)) +
+  theme_bw() +
+  labs(x = "GDP per capita", y = "Life Expectancy", col = "Continent", size = "Population") +
+  guides(color = guide_legend(order = 1),
+         size = guide_legend(order = 2))
+```
+
+#### Removendo uma legenda
+```{r}
+gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp, col = continent)) +
+  geom_point(aes(size = pop)) +
+  theme_bw() +
+  labs(x = "GDP per capita", y = "Life Expectancy", col = "Continent", size = "Population") +
+  guides(color = guide_legend(order = 1),
+         size = FALSE)
+```
+
+#### Inserindo tooltips e zoom com a função plotly::ggplotly()
+```{r}
+p = gap07 %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp, col = continent)) +
+  geom_point(aes(size = pop)) +
+  theme_bw() +
+  labs(x = "GDP per capita", y = "Life Expectancy", col = "Continent", size = "Population") +
+  guides(color = guide_legend(order = 1),
+         size = FALSE)
+
+ggplotly(p)
+```
+
+#### Inserindo o país na tooltip
+```{r}
+p = gap07 %>%
+  mutate(text = paste("country:", country)) %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp, col = continent, text = text)) +
+  geom_point(aes(size = pop)) +
+  theme_bw() +
+  labs(x = "GDP per capita", y = "Life Expectancy", col = "Continent", size = "Population") +
+  guides(color = guide_legend(order = 1),
+         size = FALSE)
+
+ggplotly(p)
+```
+

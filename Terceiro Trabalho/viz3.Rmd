@@ -1,0 +1,68 @@
+---
+title: "Terceiro Trabalho de Visualização da Informação"
+author: "Luiz Fernando Maia"
+output: html_document
+---
+
+```{r, warning = FALSE, message = FALSE}
+library(dplyr)
+library(ggplot2)
+library(HistData)
+library(gridExtra)
+```
+
+```{r}
+glimpse(Minard.troops)
+```
+
+```{r}
+glimpse(Minard.cities)
+```
+
+```{r}
+glimpse(Minard.temp)
+```
+
+```{r, fig.height = 6, fig.width = 13, dpi = 350}
+options(scipen = 99999)
+Minard.temp$date = c("18 out", "24 out", "9 nov", "14 nov", NA, "28 nov", "1 dez", "6 dez", "7 dez")
+
+tema = theme(
+  panel.background = element_rect(fill = "#FDFEF8"),
+  panel.grid.major = element_line(colour = "white"), 
+  panel.grid.minor = element_line(colour = "white"),
+  plot.background = element_rect(fill = "#FDFEF8"),
+  legend.background = element_blank(),
+  legend.key = element_blank()
+  )
+
+top = Minard.troops %>%
+  ggplot(aes(long, lat)) +
+  geom_path(aes(size = survivors, colour = direction, group = group), lineend = "round", linejoin = "round") +
+  scale_color_manual("Direção",
+                     values = c("#D7C281", "gray"), 
+                     labels = c("Avanço", "Recuo")) +
+  scale_size("Sobreviventes", range = c(3, 12)) +
+  ylab("Latitude") +
+  xlab("") +
+  geom_text(aes(label = city), data = Minard.cities) +
+  coord_cartesian(xlim = c(24, 38)) +
+  tema +
+  theme(legend.position = c(.9, .2), legend.box = "horizontal") +
+  ggtitle("Marcha de Napoleão em Moscou")
+
+bottom = Minard.temp %>%
+  na.omit() %>%
+  ggplot(aes(x = long, y = temp)) +
+  geom_line(col = "gray", size = 3) +
+  geom_text(aes(label = date)) +
+  ylab("Temperatura") +
+  xlab("Longitude") +
+  coord_cartesian(xlim = c(24, 38)) +
+  tema 
+
+grid.arrange(top, bottom, nrow = 2, heights = c(4, 2))
+```
+
+
+
