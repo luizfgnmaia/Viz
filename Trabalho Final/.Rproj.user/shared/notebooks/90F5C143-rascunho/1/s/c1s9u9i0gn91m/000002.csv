@@ -1,0 +1,8 @@
+"0","tweets = parse_stream(""CEAxFLU.json"")"
+"0","?chordDiagram"
+"1","No documentation for ‘chordDiagram’ in specified packages and libraries:
+"
+"1","you could try ‘??chordDiagram’
+"
+"0","ts_plot(tweets, by = ""mins"") + # função do rtweet que utiliza o ggplot"
+"0","  theme_bw()"

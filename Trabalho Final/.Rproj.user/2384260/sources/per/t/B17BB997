@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1575383656576.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2944413826",
+    "id" : "B17BB997",
+    "lastKnownWriteTime" : 1575404136,
+    "last_content_update" : 1575404141704,
+    "path" : "~/GitHub/Viz/Trabalho Final/rascunho.Rmd",
+    "project_path" : "rascunho.Rmd",
+    "properties" : {
+        "cursorPosition" : "447,100",
+        "scrollLine" : "436"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

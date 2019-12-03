@@ -1,0 +1,31 @@
+"0","tmp = tibble(epi_num = unique(transcripts$epi_num), rating = ratings)"
+"0",""
+"0","prop = transcripts %>%"
+"0","  inner_join(tmp) %>%"
+"0","  filter(speaker %in% personagens) %>%"
+"0","  count(epi_num, rating, speaker) %>%"
+"0","  group_by(epi_num) %>%"
+"0","  mutate(prop = n/sum(n))"
+"2","Joining, by = ""epi_num""
+"
+"0","glimpse(prop)"
+"1","Observations: 387
+"
+"1","Variables: 5
+"
+"1","Groups: epi_num [61]
+"
+"1","$ epi_num [3m[38;5;246m<int>[39m[23m 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, ...
+"
+"1",""
+"1","$ rating  [3m[38;5;246m<dbl>[39m[23m 8.1, 8.1, 8.1, 8.1, 8.1, 8.3, 8.3, 8.3, 8.3, 8.3, 8.5, 8....
+"
+"1",""
+"1","$ speaker [3m[38;5;246m<chr>[39m[23m ""Aang"", ""Iroh"", ""Katara"", ""Sokka"", ""Zuko"", ""Aang"", ""Iroh""...
+"
+"1",""
+"1","$ n       [3m[38;5;246m<int>[39m[23m 47, 7, 50, 31, 8, 30, 3, 35, 33, 12, 52, 13, 32, 32, 24, ...
+"
+"1",""
+"1","$ prop    [3m[38;5;246m<dbl>[39m[23m 0.32867133, 0.04895105, 0.34965035, 0.21678322, 0.0559440...
+"

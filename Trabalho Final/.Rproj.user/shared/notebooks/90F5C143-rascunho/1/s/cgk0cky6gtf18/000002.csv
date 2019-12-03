@@ -1,0 +1,7 @@
+"0","personagens = count_speaker$speaker[1:18]"
+"0",""
+"0","tfidf = ut %>%"
+"0","  filter(speaker %in% personagens) %>%"
+"0","  count(word, speaker) %>%"
+"0","  bind_tf_idf(word, speaker, n) %>%"
+"0","  arrange(desc(tf_idf))"

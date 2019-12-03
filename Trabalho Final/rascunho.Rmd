@@ -442,3 +442,25 @@ circos.clear()
 circos.par(start.degree = 90, clock.wise = TRUE)
 chordDiagram(mat2, grid.col = grid.col, annotationTrack = c("name", "grid"))
 ```
+
+<hr>
+
+Final: usando n, ordenado pela nação e depois pela ordem do cluster, aumentando o gap entre in e out
+```{r}
+mat = reshape2::acast(tmp, speaker ~ word, value.var = "n", fill = 0) 
+dim(mat)
+colnames(mat)
+```
+
+```{r}
+colnames(mat) = c("Aang", "Azula", "Bumi", "Feng", "Hakoda", "Hama", "Iroh",
+                  "Jet", "Katara", "Mai", "Ozai", "Pathik", "Roku", "Sokka",
+                  "Suki", "Toph", "Zhao", "Zuko")
+rownames(mat) = colnames(mat)
+```
+```{r, fig.width = 17, fig.height = 17}
+circos.clear()
+circos.par(start.degree = 90, clock.wise = TRUE)
+chordDiagram(mat, grid.col = grid.col, annotationTrack = c("name", "grid"), directional = 1, diffHeight = uh(7), order = c("Pathik", "Aang", "Katara", "Sokka", "Hakoda", "Hama", "Toph", "Bumi", "Feng", "Jet", "Suki", "Zuko", "Roku", "Ozai", "Iroh", "Azula", "Mai", "Zhao"))
+```
+

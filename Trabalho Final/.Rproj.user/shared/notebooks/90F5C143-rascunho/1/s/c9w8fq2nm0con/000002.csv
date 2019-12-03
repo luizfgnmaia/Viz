@@ -1,0 +1,4 @@
+"0","tmp = tfidf %>%"
+"0","  filter(word %in% stringr::str_to_lower(c(personagens, ""feng""))) %>%"
+"0","  mutate(speaker = stringr::str_to_lower(speaker))"
+"0","tmp$speaker[which(tmp$speaker == ""long feng"")] = ""feng"""
