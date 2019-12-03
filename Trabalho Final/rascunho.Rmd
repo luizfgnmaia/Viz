@@ -342,7 +342,7 @@ rownames(mat) = colnames(mat)
 ```
 
 Utilizando n
-```{r, fig.width = 15, fig.height = 15}
+```{r, fig.width = 17, fig.height = 17}
 circos.clear()
 circos.par(start.degree = 90, clock.wise = TRUE)
 chordDiagram(mat, grid.col = grid.col,
@@ -354,7 +354,7 @@ mat = textshape::cluster_matrix(mat)
 ```
 
 Utilizando n e reordenando
-```{r, fig.width = 15, fig.height = 15}
+```{r, fig.width = 17, fig.height = 17}
 circos.clear()
 circos.par(start.degree = 90, clock.wise = TRUE)
 chordDiagram(mat, grid.col = grid.col,
@@ -382,7 +382,7 @@ rownames(mat) = colnames(mat)
 ```
 
 Utilizando tf
-```{r, fig.width = 15, fig.height = 15}
+```{r, fig.width = 17, fig.height = 17}
 circos.clear()
 circos.par(start.degree = 90, clock.wise = TRUE)
 chordDiagram(mat, grid.col = grid.col,
@@ -394,10 +394,51 @@ mat = textshape::cluster_matrix(mat)
 ```
 
 Utilizando tf e reordenando
-```{r, fig.width = 15, fig.height = 15}
+```{r, fig.width = 17, fig.height = 17}
 circos.clear()
 circos.par(start.degree = 90, clock.wise = TRUE)
 chordDiagram(mat, grid.col = grid.col,
              directional = 1, annotationTrack = c("name", "grid"))
 ```
 
+<hr>
+
+```{r}
+mat = reshape2::acast(tmp, speaker ~ word, value.var = "n", fill = 0) 
+dim(mat)
+colnames(mat)
+```
+
+```{r}
+colnames(mat) = c("Aang", "Azula", "Bumi", "Feng", "Hakoda", "Hama", "Iroh",
+                  "Jet", "Katara", "Mai", "Ozai", "Pathik", "Roku", "Sokka",
+                  "Suki", "Toph", "Zhao", "Zuko")
+rownames(mat) = colnames(mat)
+```
+
+```{r}
+mat2 = mat
+for(i in 1:18) {
+  for(j in (i+1):18) {
+    if(j < 19) {
+      mat2[i,j] = mat2[i,j] + mat[j,i]
+      mat2[j,i] = mat2[i,j]
+    }
+  }
+}
+```
+
+Sem direção (soma das palavras nas duas direções)
+```{r, fig.width = 17, fig.height = 17}
+circos.clear()
+circos.par(start.degree = 90, clock.wise = TRUE)
+chordDiagram(mat2, grid.col = grid.col, annotationTrack = c("name", "grid"))
+```
+
+Sem direção e ordenando
+```{r, fig.width = 17, fig.height = 17}
+mat2 = textshape::cluster_matrix(mat2)
+circos.clear()
+circos.par(start.degree = 90, clock.wise = TRUE)
+chordDiagram(mat2, grid.col = grid.col, annotationTrack = c("name", "grid"))
+```
