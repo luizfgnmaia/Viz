@@ -1,5 +1,0 @@
-"0","mat = textshape::cluster_matrix(mat)"
-"2","Registered S3 method overwritten by 'data.table':
-  method           from
-  print.data.table     
-"

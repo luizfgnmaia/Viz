@@ -1,5 +1,5 @@
 ---
-title: "Apresentação da proposta"
+title: "Rascunho"
 author: Luiz Fernando Maia
 output: html_document
 ---
@@ -100,6 +100,23 @@ count_speaker = ut %>%
   count(speaker) %>%
   arrange(desc(n))
 count_speaker
+```
+
+```{r, fig.width = 10, warning = FALSE}
+count_speaker$Selecionado = "Não"
+count_speaker$Selecionado[1:18] = "Sim"
+count_speaker %>%
+  mutate(speaker = factor(speaker, levels = speaker)) %>%
+  head(36) %>%
+  ggplot(aes(x = speaker, y = n, alpha = Selecionado)) +
+  geom_bar(stat = "identity") +
+  xlab("Personagem") +
+  ylab("Quantidade de palavras") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.3)) +
+  scale_alpha_discrete(range = c(0.4, 0.9)) +
+  ggtitle("Palavras por personagens e personagens selecionados") +
+  guides(alpha = guide_legend(reverse = TRUE))
 ```
 
 Optei por utilizar apenas os 18 personagens com maior número de palavras e calcular as palavras mais utilizadas e a medida tf-idf considerando cada personagem como um documento. A medida tf-idf nos permite avaliar palavras que caracterizam um determinado documento, neste caso personagem, em relação a um conjunto de documentos. Ela é calculada da seguinte forma:

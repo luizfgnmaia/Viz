@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1574176945204.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "B1D816C",
+    "lastKnownWriteTime" : 1574177084,
+    "last_content_update" : 1574177084348,
+    "path" : "~/GitHub/Viz/Trabalho Final/scrape.R",
+    "project_path" : "scrape.R",
+    "properties" : {
+        "cursorPosition" : "52,12",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
