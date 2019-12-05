@@ -20,7 +20,7 @@ load("data/ratings.RData")
 
 Inicialmente, minha ideia era utilizar dados do twitter (texto e hora do tweet) de alguma partida de futebol e comparar a frequência de determinadas palavras com os eventos do jogo. 
 
-No entanto, um problema que surgiu foi que a api gratuita do Tweeter aparentemente não retorna tweets de maneira constante ao decorrer da partida. Segue um exemplo em que temos tweets apenas para alguns intervalos de tempo do jogo.
+No entanto, um problema que surgiu foi que a api gratuita do Twitter aparentemente não retorna tweets de maneira constante ao decorrer da partida. Segue um exemplo em que temos tweets apenas para alguns intervalos de tempo do jogo.
 ```{r, message = FALSE}
 tweets = parse_stream("CEAxFLU.json")
 ts_plot(tweets, by = "mins") + # função do rtweet que utiliza o ggplot
