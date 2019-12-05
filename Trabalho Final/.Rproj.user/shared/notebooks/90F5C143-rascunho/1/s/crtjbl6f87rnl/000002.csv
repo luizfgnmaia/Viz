@@ -1,4 +1,0 @@
-"0","mat2 = textshape::cluster_matrix(mat2)"
-"0","circos.clear()"
-"0","circos.par(start.degree = 90, clock.wise = TRUE)"
-"0","chordDiagram(mat2, grid.col = grid.col, annotationTrack = c(""name"", ""grid""))"

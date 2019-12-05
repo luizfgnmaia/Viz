@@ -1,4 +1,0 @@
-"0","count_speaker = ut %>%"
-"0","  count(speaker) %>%"
-"0","  arrange(desc(n))"
-"0","count_speaker"

@@ -58,6 +58,17 @@ scrape_ratings <- function(season) {
     as.numeric()
 }
 
-ratings = c(scrape_ratings(1), scrape_ratings(2), scrape_ratings(3))[-1] # o primeiro do site não conta
+scrape_desc <- function(season) {
+  rating = "https://www.imdb.com/title/tt0417299/episodes?season=" %>%
+    paste0(as.character(season)) %>%
+    read_html() %>%
+    html_nodes(".item_description") %>%
+    html_text(trim = TRUE)
+}
+
+rat = c(scrape_ratings(1), scrape_ratings(2), scrape_ratings(3))[-1] # o primeiro do site não conta
+desc = c(scrape_desc(1), scrape_desc(2), scrape_desc(3))[-1]
+
+ratings = tibble(epi_num = 1:61, epi_name = epi_names, rating = rat, description = desc)
 
 save(ratings, file = "data/ratings.RData")
