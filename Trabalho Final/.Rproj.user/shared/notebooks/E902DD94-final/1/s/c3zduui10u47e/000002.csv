@@ -1,0 +1,3 @@
+"0","ut = transcripts %>%"
+"0","  unnest_tokens(word, text) %>% "
+"0","  anti_join(stop_words, by = ""word"") # retirando stop words"

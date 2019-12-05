@@ -1,0 +1,6 @@
+"0","tmp4 = reshape2::acast(words_epi, epi_num ~ speaker, value.var = ""n"", fill = 0) %>%"
+"0","  reshape2::melt()"
+"0","names(tmp4) = c(""epi_num"", ""speaker"", ""n"")"
+"0","tmp4 = tmp4 %>%"
+"0","  inner_join(tmp1, by = ""speaker"") %>%"
+"0","  mutate(speaker = reorder(speaker, order_speaker)) "

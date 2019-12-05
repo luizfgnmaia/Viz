@@ -1,0 +1,3 @@
+"0","tweets = parse_stream(""CEAxFLU.json"")"
+"0","ts_plot(tweets, by = ""mins"") + # função do rtweet que utiliza o ggplot"
+"0","  theme_bw()"
