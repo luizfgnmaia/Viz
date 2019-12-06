@@ -1,6 +1,0 @@
-"0","intro = transcripts$text[1]"
-"0",""
-"0","transcripts = transcripts %>%"
-"0","  filter(text != intro) %>% # tirando as introducoes"
-"0","  mutate(text = stringr::str_replace_all(text, '\\[(.*?)\\]', ''), # tirando o que ta entre colchetes"
-"0","         text = qdapRegex::rm_number(text))"

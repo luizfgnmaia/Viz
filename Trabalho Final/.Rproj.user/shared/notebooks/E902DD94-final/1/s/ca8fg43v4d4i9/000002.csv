@@ -1,8 +1,0 @@
-"0","grid.col = c(Aang = air, Azula = fire, Bumi = earth, Feng = earth, Hakoda = water,"
-"0","             Hama = water, Iroh = fire, Jet = earth, Katara = water, Mai = fire,"
-"0","             Ozai = fire, Pathik = air, Roku = fire, Sokka = water, Suki = earth,"
-"0","             Toph = earth, Zhao = fire, Zuko = fire)"
-"0",""
-"0","circos.clear()"
-"0","circos.par(start.degree = 90, clock.wise = TRUE)"
-"0","chordDiagram(mat3, grid.col = grid.col, annotationTrack = c(""name"", ""grid""), directional = 1, diffHeight = uh(7), order = c(""Pathik"", ""Aang"", ""Katara"", ""Sokka"", ""Hakoda"", ""Hama"", ""Toph"", ""Bumi"", ""Feng"", ""Jet"", ""Suki"", ""Zuko"", ""Roku"", ""Ozai"", ""Iroh"", ""Azula"", ""Mai"", ""Zhao""))"

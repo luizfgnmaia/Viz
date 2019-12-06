@@ -1,8 +1,0 @@
-"0","tmp = tibble(epi_num = unique(transcripts$epi_num), rating = ratings$rating)"
-"0",""
-"0","words_epi = ut %>%"
-"0","  inner_join(tmp, by = ""epi_num"") %>%"
-"0","  filter(speaker %in% personagens) %>%"
-"0","  count(epi_num, rating, speaker)"
-"0",""
-"0","words_epi"

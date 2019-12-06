@@ -1,0 +1,7 @@
+"0","library(dplyr)"
+"0","library(ggplot2)"
+"0","library(tidytext)"
+"0","library(rtweet)"
+"0","library(circlize) # https://jokergoo.github.io/circlize_book/book/"
+"0","load(""data/transcripts.RData"")"
+"0","load(""data/ratings.RData"")"
