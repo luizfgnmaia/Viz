@@ -1,0 +1,7 @@
+png("plot.png", width = 3840*2, height = 2160*2)
+par(cex = 3.5)
+circos.clear()
+circos.par(start.degree = 90, clock.wise = TRUE)
+chordDiagram(mat3, grid.col = grid.col, annotationTrack = c("name", "grid"), directional = 1, diffHeight = uh(7), order = c("Pathik", "Aang", "Katara", "Sokka", "Hakoda", "Hama", "Toph", "Bumi", "Feng", "Jet", "Suki", "Zuko", "Roku", "Ozai", "Iroh", "Azula", "Mai", "Zhao"))
+title("Menções dos nomes de personagens por outros personagens")
+dev.off()

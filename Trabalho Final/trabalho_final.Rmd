@@ -104,7 +104,7 @@ count_speaker = ut %>%
 count_speaker
 ```
 
-Como nesta série, cada personagem tem uma origin ligada a um dos quatro elementos (água, fogo, terra e ar), optei por inserir esta informação nas visualizações.
+Como nesta série cada personagem tem uma origem ligada a um dos quatro elementos (água, fogo, terra e ar), optei por inserir esta informação nas visualizações.
 
 As cores selecionadas foram escolhidas a partir da vestimenta dos personagens e da seguinte imagem:
 
@@ -138,7 +138,7 @@ count_speaker %>%
   theme_bw() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.3)) +
   scale_alpha_discrete(range = c(0.3, 0.9)) +
-  ggtitle("Palavras por personagens e personagens selecionados") +
+  ggtitle("Quantidade de palavras por personagens e personagens selecionados") +
   guides(alpha = guide_legend(reverse = TRUE), fill = FALSE) +
   scale_fill_manual(values = c(water, air, water, fire, fire, earth,
                                fire, fire, earth, water, air, fire,
@@ -368,6 +368,16 @@ ggdendro::ggdendrogram(clusters)
 
 Podemos ver que as maiores similaridades estão entre Azula/Mai e Sokka/Katara. O que faz sentido visto que estes pares tendem a aparecer juntos nos episódios.
 
+##
+Também criei uma matriz de correlação utilizando os vetores tf-idf e verifiquei a correlação entre os personagens utilizando este vetores e a similaridade do cosseno.
+```{r, fig.width = 10, fig.height = 10, dpi = 300}
+mat_tfidf = reshape2::acast(tfidf, word ~ speaker, value.var = "tf_idf", fill = 0) 
+cos = lsa::cosine(mat)
+heatmap(cos)
+```
+
+Nota-se uma similaridade alta entre os personagens Katara, Toph, Aang e Sokka, e entre os personagens Azula, Zuko, Ozai, Iroh e Zhao. O primeiro destes grupos é formado pelos alguns dos principais protagonistas da série enquanto que o segundo é composto exclusivamente de personagens da nação do fogo. Também observamos no dendrograma que o personagem Pathik possui o vocabulário mais único visto que ele só se une a outros grupos na última iteração da clusterização hierárquica, o que pode ser visto no gráfico do tf-idf por personagem.
+
 Posteriormente, considerei apenas as palavras referentes aos nomes dos 18 personagens selecionados e ilustrei a quantidade de vezes que um personagem diz o nome de outro. Note que a diferença das alturas indicam a direção das falas.
 ```{r}
 tmp6 = tfidf %>%
@@ -392,6 +402,7 @@ grid.col = c(Aang = air, Azula = fire, Bumi = earth, Feng = earth, Hakoda = wate
 circos.clear()
 circos.par(start.degree = 90, clock.wise = TRUE)
 chordDiagram(mat3, grid.col = grid.col, annotationTrack = c("name", "grid"), directional = 1, diffHeight = uh(7), order = c("Pathik", "Aang", "Katara", "Sokka", "Hakoda", "Hama", "Toph", "Bumi", "Feng", "Jet", "Suki", "Zuko", "Roku", "Ozai", "Iroh", "Azula", "Mai", "Zhao"))
+title("Menções dos nomes de personagens por outros personagens")
 ```
 
 ## Referências
