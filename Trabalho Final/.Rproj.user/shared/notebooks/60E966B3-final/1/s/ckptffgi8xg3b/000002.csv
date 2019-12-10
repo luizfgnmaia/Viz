@@ -1,3 +1,0 @@
-"0","mat_tfidf = reshape2::acast(tfidf, word ~ speaker, value.var = ""tf_idf"", fill = 0) "
-"0","cos = lsa::cosine(mat)"
-"0","heatmap(cos)"

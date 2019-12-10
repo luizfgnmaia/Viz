@@ -1,0 +1,3 @@
+"0","mat = reshape2::acast(tfidf, word ~ speaker, value.var = ""tf"", fill = 0) "
+"0","rownames(mat) = rep("""", nrow(mat)) "
+"0","heatmap(mat, main = ""Matriz das frequências dos termos por personagem"")"
