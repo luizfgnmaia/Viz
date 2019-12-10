@@ -3,5 +3,6 @@
 "0","library(tidytext)"
 "0","library(rtweet)"
 "0","library(circlize) # https://jokergoo.github.io/circlize_book/book/"
+"0","library(ComplexHeatmap) # https://jokergoo.github.io/ComplexHeatmap-reference/book/a-single-heatmap.html"
 "0","load(""data/transcripts.RData"")"
 "0","load(""data/ratings.RData"")"

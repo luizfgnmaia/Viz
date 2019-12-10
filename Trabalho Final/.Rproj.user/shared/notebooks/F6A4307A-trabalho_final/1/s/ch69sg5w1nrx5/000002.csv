@@ -1,0 +1,4 @@
+"0","mat_tfidf = reshape2::acast(tfidf, word ~ speaker, value.var = ""tf_idf"", fill = 0) "
+"0","cos = lsa::cosine(mat)"
+"0","Heatmap(cos, name = ""Similaridade"", column_title = ""Matriz da similaridade do cosseno entre os vetores tf-idf"","
+"0","        col = colorRamp2(c(0, 1), c(""white"", ""red"")))"

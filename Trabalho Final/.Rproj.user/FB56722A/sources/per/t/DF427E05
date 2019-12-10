@@ -5,16 +5,16 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "795604765",
+    "hash" : "1762548215",
     "id" : "DF427E05",
-    "lastKnownWriteTime" : 1575949916,
-    "last_content_update" : 1575949916816,
+    "lastKnownWriteTime" : 1575951818,
+    "last_content_update" : 1575951818161,
     "path" : "~/GitHub/Viz/Trabalho Final/trabalho_final.Rmd",
     "project_path" : "trabalho_final.Rmd",
     "properties" : {
         "chunk_output_type" : "inline",
-        "cursorPosition" : "350,35",
-        "scrollLine" : "330"
+        "cursorPosition" : "13,0",
+        "scrollLine" : "0"
     },
     "relative_order" : 2,
     "source_on_save" : false,

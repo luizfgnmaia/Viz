@@ -10,6 +10,7 @@ library(ggplot2)
 library(tidytext)
 library(rtweet)
 library(circlize) # https://jokergoo.github.io/circlize_book/book/
+library(ComplexHeatmap) # https://jokergoo.github.io/ComplexHeatmap-reference/book/a-single-heatmap.html
 
 load("data/transcripts.RData")
 load("data/ratings.RData")
@@ -363,7 +364,7 @@ Nota-se que o personagem com maior correlação entre quantidade de palavras e n
 Utilizando a matriz de correlação criada na seção anterior, podemos remover a linha e a coluna do rating e buscar personagens que tendem a ter quantidades de falas similares nos mesmos episódios.
 
 ```{r, fig.width = 10, fig.height = 10, dpi = 300}
-heatmap(mat_rating[-1,-1], main = "Matriz de correlação das quantidades de palavras por episódio")
+Heatmap(mat_rating[-1,-1], name = "Correlação", column_title = "Matriz de correlação das quantidades de palavras por episódio")
 ```
 
 Podemos ver que as maiores similaridades estão entre Azula/Mai e Sokka/Katara. O que faz sentido visto que estes pares tendem a aparecer juntos nos episódios.
@@ -372,7 +373,8 @@ Também criei uma matriz de correlação utilizando os vetores tf-idf e verifiqu
 ```{r, fig.width = 10, fig.height = 10, dpi = 300}
 mat_tfidf = reshape2::acast(tfidf, word ~ speaker, value.var = "tf_idf", fill = 0) 
 cos = lsa::cosine(mat)
-heatmap(cos, main = "Matriz da similaridade do cosseno entre os vetores tf-idf")
+Heatmap(cos, name = "Similaridade", column_title = "Matriz da similaridade do cosseno entre os vetores tf-idf",
+        col = colorRamp2(c(0, 1), c("white", "red")))
 ```
 
 Nota-se uma similaridade alta entre os personagens Katara, Toph, Aang e Sokka, e entre os personagens Azula, Zuko, Ozai, Iroh e Zhao. O primeiro destes grupos é formado pelos alguns dos principais protagonistas da série enquanto que o segundo é composto exclusivamente de personagens da nação do fogo. Também observamos no dendrograma que o personagem Pathik possui o vocabulário mais único visto que ele só se une a outros grupos na última iteração da clusterização hierárquica, o que pode ser visto no gráfico do tf-idf por personagem.
